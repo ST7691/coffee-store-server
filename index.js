@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config(); 
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const app = express();
 const port = process.env.PORT || 3000;
@@ -7,10 +8,9 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 //----------------------- mongodb connection ---------------------------
-const uri = "mongodb://localhost:27017/";
+const uri = process.env.DB_URL;
 
-// const uri =
-//   "mongodb+srv://productDB:<db_password>@productdb.ctixzzf.mongodb.net/?appName=productdb";
+// console.log(process.env.DB_URL);
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
